@@ -1,0 +1,9 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // كل القراءة والكتابة بتحصل من السيرفر (Admin SDK) بس. المتصفح ممنوع تمامًا.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
